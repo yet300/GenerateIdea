@@ -41,13 +41,5 @@ class KoinAnnotationPlugin : Plugin<Project> {
         tasks.matching { it.name.startsWith("ksp") && it.name != "kspCommonMainKotlinMetadata" }.configureEach {
             dependsOn("kspCommonMainKotlinMetadata")
         }
-
-        tasks.named("runKtlintCheckOverCommonMainSourceSet") {
-            dependsOn(tasks.named("kspCommonMainKotlinMetadata"))
-        }
-
-        tasks.named("runKtlintFormatOverCommonMainSourceSet") {
-            dependsOn(tasks.named("kspCommonMainKotlinMetadata"))
-        }
     }
 }
