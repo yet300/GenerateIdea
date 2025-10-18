@@ -1,34 +1,59 @@
 package com.yet.generate.api
 
 import com.yet.generate.api.model.*
-import de.jensklingenberg.ktorfit.http.*
+import io.ktor.client.*
+import io.ktor.client.call.*
+import io.ktor.client.request.*
+import io.ktor.http.*
 
-interface IdeaGeneratorApi {
+class IdeaGeneratorApi(private val client: HttpClient) {
 
-    @GET("/")
-    suspend fun healthCheck(): HealthResponse
+    suspend fun healthCheck(): HealthResponse {
+        return client.get("/").body()
+    }
 
-    @POST("/generate_idea")
-    suspend fun generateIdea(@Body request: GenerateIdeaRequest): GenerateIdeaResponse
+    suspend fun generateIdea(request: GenerateIdeaRequest): GenerateIdeaResponse {
+        return client.post("/generate_idea") {
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }.body()
+    }
 
-    @POST("/generate_batch")
-    suspend fun generateBatch(@Body request: BatchGenerateRequest): BatchGenerateResponse
+    suspend fun generateBatch(request: BatchGenerateRequest): BatchGenerateResponse {
+        return client.post("/generate_batch") {
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }.body()
+    }
 
-    @POST("/generate_random")
-    suspend fun generateRandom(@Body request: RandomIdeaRequest): BatchGenerateResponse
+    suspend fun generateRandom(request: RandomIdeaRequest): BatchGenerateResponse {
+        return client.post("/generate_random") {
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }.body()
+    }
 
-    @GET("/tags")
-    suspend fun getTags(): TagsResponse
+    suspend fun getTags(): TagsResponse {
+        return client.get("/tags").body()
+    }
 
-    @GET("/ideas")
     suspend fun getIdeas(
-        @Query("type") type: String? = null,
-        @Query("min_mental") minMental: String? = null,
-        @Query("max_team_size") maxTeamSize: String? = null,
-        @Query("include_banal") includeBanal: Boolean = false,
-        @Query("limit") limit: Int = 50
-    ): List<IdeaResponse>
+        type: String? = null,
+        minMental: String? = null,
+        maxTeamSize: String? = null,
+        includeBanal: Boolean = false,
+        limit: Int = 50
+    ): List<IdeaResponse> {
+        return client.get("/ideas") {
+            parameter("type", type)
+            parameter("min_mental", minMental)
+            parameter("max_team_size", maxTeamSize)
+            parameter("include_banal", includeBanal)
+            parameter("limit", limit)
+        }.body()
+    }
 
-    @GET("/stats")
-    suspend fun getStats(): StatsResponse
+    suspend fun getStats(): StatsResponse {
+        return client.get("/stats").body()
+    }
 }

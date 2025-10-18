@@ -1,6 +1,6 @@
 # API Module
 
-Complete Kotlin Multiplatform API module for the Idea Generator service using Ktor-client and Ktorfit.
+Complete Kotlin Multiplatform API module for the Idea Generator service using Ktor Client.
 
 ## Structure
 
@@ -110,4 +110,8 @@ val api = ApiClientBuilder(
 
 ## Dependencies
 
-All dependencies are configured in `build.gradle.kts` using the `ktorfit` bundle from `libs.versions.toml`.
+- `ktor-client-core` - Core Ktor client
+- `ktor-client-content-negotiation` - JSON content negotiation
+- `ktor-serialization-kotlinx-json` - Kotlinx serialization
+- `ktor-client-logging` - Request/response logging
+- Platform-specific engines (Android, iOS, Desktop)

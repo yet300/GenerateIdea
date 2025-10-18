@@ -144,10 +144,14 @@ data class GenerateIdeaResponse(
     val timeEstimate: String
 )
 
-// API interface
-interface IdeaGeneratorApi {
-    @POST("/generate_idea")
-    suspend fun generateIdea(@Body request: GenerateIdeaRequest): GenerateIdeaResponse
+// API client class
+class IdeaGeneratorApi(private val client: HttpClient) {
+    suspend fun generateIdea(request: GenerateIdeaRequest): GenerateIdeaResponse {
+        return client.post("/generate_idea") {
+            contentType(ContentType.Application.Json)
+            setBody(request)
+        }.body()
+    }
 }
 ```
 

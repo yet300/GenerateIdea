@@ -1,15 +1,12 @@
 package com.yet.generate.api
 
-import de.jensklingenberg.ktorfit.Ktorfit
 import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
-import jakarta.inject.Singleton
 import kotlinx.serialization.json.Json
 
-@Singleton
 class ApiClientBuilder(
     private val baseUrl: String = BuildKonfig.API_BASE_URL,
     private val enableLogging: Boolean = true,
@@ -45,12 +42,7 @@ class ApiClientBuilder(
             }
         }
 
-        val ktorfit = Ktorfit.Builder()
-            .baseUrl(baseUrl)
-            .httpClient(httpClient)
-            .build()
-
-        return ktorfit.create()
+        return IdeaGeneratorApi(httpClient)
     }
 }
 
