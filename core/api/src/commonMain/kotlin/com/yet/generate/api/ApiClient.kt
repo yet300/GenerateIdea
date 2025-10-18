@@ -6,8 +6,10 @@ import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.plugins.logging.*
 import io.ktor.serialization.kotlinx.json.*
+import jakarta.inject.Singleton
 import kotlinx.serialization.json.Json
 
+@Singleton
 class ApiClientBuilder(
     private val baseUrl: String = BuildKonfig.API_BASE_URL,
     private val enableLogging: Boolean = true,
