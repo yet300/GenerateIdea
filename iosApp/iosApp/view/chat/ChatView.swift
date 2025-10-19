@@ -20,8 +20,6 @@ struct ChatView: View {
 
     var body: some View {
         ZStack {
-            AnimatedAuroraBackground()
-                .ignoresSafeArea()
 
             // Messages or Empty State
             if model.messages.isEmpty && !model.isLoading {
@@ -65,7 +63,7 @@ struct ChatView: View {
             }
         }
         .navigationTitle("Idea Generator")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.inline)
         .sheet(item: Binding<SheetItem?>(
             get: {
                 if let child = bottomSheetSlot.child?.instance {
@@ -326,26 +324,6 @@ private struct SheetContainerView: View {
         default:
             EmptyView()
         }
-    }
-}
-
-
-struct AnimatedAuroraBackground: View {
-    @State private var startPoint = UnitPoint(x: 0, y: -0.5)
-    @State private var endPoint = UnitPoint(x: 1, y: 1.5)
-
-    var body: some View {
-        LinearGradient(
-            gradient: Gradient(colors: [.blue.opacity(0.6), .black, .purple.opacity(0.7), .black]),
-            startPoint: startPoint,
-            endPoint: endPoint
-        )
-            .onAppear {
-                withAnimation(.easeInOut(duration: 8).repeatForever(autoreverses: true)) {
-                    startPoint = UnitPoint(x: 1, y: 1.5)
-                    endPoint = UnitPoint(x: 0, y: -0.5)
-                }
-            }
     }
 }
 
