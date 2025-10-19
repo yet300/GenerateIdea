@@ -10,7 +10,7 @@ import kotlin.js.JsExport
 
 @OptIn(ExperimentalJsExport::class)
 @JsExport
-fun InitKoin(config: KoinAppDeclaration? = null) {
+fun initKoin(config: KoinAppDeclaration? = null) {
     startKoin {
         modules(
 

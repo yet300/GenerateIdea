@@ -5,7 +5,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
-import com.yet.generate.di.InitKoin
+import com.yet.generate.di.initKoin
 import com.yet.generate.feature.root.DefaultRootComponent
 import java.awt.Dimension
 import javax.swing.SwingUtilities
@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities
 fun main() = application {
     val lifecycle = LifecycleRegistry()
 
-    InitKoin()
+    initKoin()
 
     val root =
         runOnUiThread {
