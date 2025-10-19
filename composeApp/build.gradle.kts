@@ -35,6 +35,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.decompose.compose)
+            implementation(libs.decompose)
 
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.shared)
