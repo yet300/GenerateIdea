@@ -22,6 +22,8 @@ kotlin {
             isStatic = true
 
             export(projects.core.domain)
+            export(projects.feature.root)
+            export(projects.feature.chat)
 
             export(libs.bundles.decompose)
 
@@ -37,6 +39,8 @@ kotlin {
             implementation(libs.koin.core)
 
             api(projects.core.domain)
+            api(projects.feature.root)
+            api(projects.feature.chat)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
