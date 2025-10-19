@@ -29,6 +29,16 @@ fun ChatScreen(
                     titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             )
+        },
+        bottomBar = {
+            InputArea(
+                inputText = model.inputText,
+                isLoading = model.isLoading,
+                onInputTextChanged = component::onInputTextChanged,
+                onSendMessage = component::onSendMessage,
+                onFilterClick = component::onFilterClick,
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     ) { paddingValues ->
         Column(
@@ -61,16 +71,6 @@ fun ChatScreen(
                     onDismiss = component::onClearError
                 )
             }
-
-            // Input area
-            InputArea(
-                inputText = model.inputText,
-                isLoading = model.isLoading,
-                onInputTextChanged = component::onInputTextChanged,
-                onSendMessage = component::onSendMessage,
-                onFilterClick = component::onFilterClick,
-                modifier = Modifier.fillMaxWidth()
-            )
         }
     }
 
