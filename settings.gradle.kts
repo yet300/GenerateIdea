@@ -41,3 +41,7 @@ include(":core:api")
 include(":core:domain")
 include(":core:data")
 include(":core:common")
+
+include(":feature")
+include(":feature:root")
+include(":feature:chat")
