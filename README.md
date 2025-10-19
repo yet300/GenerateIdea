@@ -1,5 +1,12 @@
 # GenerateIdea
 
+https://github.com/user-attachments/assets/e65d25dc-b1b7-4bcc-b42e-cc3b966d8832
+
+
+
+https://github.com/user-attachments/assets/65c79d2b-b63e-4a1f-bb9c-bd286a725071
+
+
 A Kotlin Multiplatform AI-powered idea generator built in two days(Client and Backend) at a hackathon(Hacktoberfes) with vibe coding(Kiro Ide with Claude Sonnet 4.5). This project demonstrates clean architecture principles across Android, iOS, and Desktop platforms using Compose Multiplatform and SwiftUI for ios.
 
 ## What is this?
