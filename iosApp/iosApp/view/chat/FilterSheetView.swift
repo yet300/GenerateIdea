@@ -4,7 +4,7 @@ import Shared
 struct FilterSheetView: View {
     private let component: ChatComponentBottomSheetChildFilterChild
     
-    // 1. Создаем локальные, изменяемые @State для каждого поля
+
     @State private var niche: String
     @State private var type: String
     @State private var budget: String
@@ -13,13 +13,13 @@ struct FilterSheetView: View {
     init(component: ChatComponentBottomSheetChildFilterChild) {
         self.component = component
         
-        // 2. Инициализируем локальные @State из начальных данных компонента
+
         let initialFilters = component.currentFilters
         _niche = State(initialValue: initialFilters.niche)
         _type = State(initialValue: initialFilters.type)
-        // Преобразуем опциональный Int в String для TextField
+
         _budget = State(initialValue: initialFilters.budget?.description ?? "")
-        // Используем пустую строку для "None"
+
         _timeEstimate = State(initialValue: initialFilters.timeEstimate ?? "")
     }
     
@@ -27,7 +27,6 @@ struct FilterSheetView: View {
         NavigationStack {
             Form {
                 Section("Niche") {
-                    // 3. Привязываем UI к локальным @State переменным
                     TextField("e.g., AI in healthcare", text: $niche)
                 }
                 
@@ -64,13 +63,14 @@ struct FilterSheetView: View {
                     Button("Cancel", action: component.onDismiss)
                 }
                 ToolbarItem(placement: .confirmationAction) {
+                    let budgetKotlinInt = Int(budget).map { KotlinInt(value: Int32($0)) }
+
                     Button("Apply") {
-                        // 4. Собираем новый объект IdeaFilters из локальных состояний
                         let updatedFilters = IdeaFilters(
                             niche: niche,
                             type: type,
-                            budget: Int(budget) as! KotlinInt, // Пытаемся преобразовать String обратно в Int
-                            timeEstimate: timeEstimate.isEmpty ? nil : timeEstimate // nil если строка пустая
+                            budget: budgetKotlinInt,
+                            timeEstimate: timeEstimate.isEmpty ? nil : timeEstimate
                         )
                         
                         component.onFiltersChanged(updatedFilters)
