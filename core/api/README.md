@@ -80,10 +80,29 @@ val response = api.generateIdea(
    cp secret.properties.example secret.properties
    ```
 
-2. Update `secret.properties` with your API URL:
+2. Update `secret.properties` with your API URL based on your target device:
+
+   **For iOS Simulator / Desktop:**
    ```properties
    API_BASE_URL=http://127.0.0.1:8001
    ```
+
+   **For Android Emulator:**
+   ```properties
+   API_BASE_URL=http://10.0.2.2:8001
+   ```
+   (10.0.2.2 is a special IP that routes to the host machine)
+
+   **For Physical Devices:**
+   ```properties
+   API_BASE_URL=http://192.168.1.XXX:8001
+   ```
+   Replace `192.168.1.XXX` with your computer's local network IP address.
+
+   **Finding your local IP:**
+   - **macOS**: System Settings > Network > Wi-Fi > Details > TCP/IP
+   - **Windows**: Run `ipconfig` in Command Prompt (look for IPv4 Address)
+   - **Linux**: Run `ip addr show` or `ifconfig`
 
 3. The file is automatically ignored by git for security.
 
