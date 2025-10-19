@@ -38,6 +38,6 @@ buildkonfig {
     packageName = "com.yet.generate.api"
     
     defaultConfigs {
-        buildConfigField(STRING, "API_BASE_URL", "\"$apiBaseUrl\"")
+        buildConfigField(STRING, "API_BASE_URL", apiBaseUrl)
     }
 }
