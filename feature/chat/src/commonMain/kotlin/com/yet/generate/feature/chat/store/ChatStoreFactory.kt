@@ -67,15 +67,8 @@ internal class ChatStoreFactory : KoinComponent {
             }
         }
 
-        @OptIn(ExperimentalUuidApi::class)
         private fun loadInitialData() {
-            // Add welcome message
-            val welcomeMessage = ChatMessage(
-                id = Uuid.random().toString(),
-                text = "Welcome! I can help you generate creative ideas. Type your niche or click the button to generate a random idea.",
-                isUser = false
-            )
-            dispatch(ChatStore.Msg.MessageAdded(welcomeMessage))
+            // No initial message - start with empty screen
         }
 
         private fun updateInputText(text: String) {
