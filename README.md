@@ -35,7 +35,7 @@ This is a hackathon project created in just a few hours that showcases:
 
 ```
 GenerateIdea/
-├── composeApp/          # Main application UI (Android, iOS, Desktop)
+├── composeApp/          # Main application UI (Android, Desktop)
 ├── shared/              # Shared business logic
 ├── core/                # Clean architecture core modules
 │   ├── api/            # Network layer (Ktor, DTOs)
@@ -45,7 +45,7 @@ GenerateIdea/
 ├── feature/            # Feature modules
 │   ├── chat/          # Chat/idea generation feature
 │   └── root/          # Root navigation
-├── iosApp/            # iOS-specific entry point
+├── iosApp/            # iOS-specific entry point and ui
 └── build-logic/       # Gradle convention plugins
 ```
 
